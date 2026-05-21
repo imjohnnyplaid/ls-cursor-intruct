@@ -1,7 +1,44 @@
 # Language Skull
 
-Production iOS language learning app.
+**Premium structured language learning iOS app** built with SwiftUI + SwiftData.
 
-Follow docs/ and .cursorrules exactly.
+Feels like having a personal coach: clear Morning + Evening daily plans, world-class flashcards, and a sophisticated dark academia aesthetic (Old Oxford / Harvard library vibe).
 
-Build strictly using the phased plan in `docs/13_INCREMENTAL_BUILD_PLAN.md`.
+## Quick Start
+
+1. Clone this repository
+2. Open the folder in **Cursor**
+3. Read `SETUP.md` for detailed instructions
+4. Start with **Phase 1** using the prompts in the `prompts/` folder
+
+## Repository Structure
+
+- `docs/` – Full detailed specifications (data models, flows, UI rules, compliance, etc.)
+- `prompts/` – 9 production-grade phase prompts to feed to Cursor
+- `SETUP.md` – How to use the prompts + recommended workflow
+- `.cursorrules` – Global rules Cursor must follow in every session
+
+## How to Build
+
+Follow the phases **strictly in order**:
+
+1. Phase 1: Foundation
+2. Phase 2: Onboarding & Auth
+3. Phase 3: Content Pipeline & Study Engine
+4. Phase 4: Sessions & Activities UI
+5. Phase 5: Navigation, Home & Calendar
+6. Phase 6: Monetization & Trial
+7. Phase 7: Admin Mode & Profile
+8. Phase 8: Polish, Referrals, Analytics, Compliance
+9. Phase 9: Final Testing & Submission
+
+After each phase, Cursor should give you a completion report. Review it before moving to the next phase.
+
+## Key Principles
+
+- Build production-quality code from day one (no placeholders)
+- Test in Simulator after every major component
+- Make clean git commits
+- Follow the docs and refined aesthetic exactly
+
+Good luck building Language Skull!
