@@ -1,36 +1,60 @@
-# 01 PROJECT VISION AND BUSINESS RULES – Language Skull
+# 01 PROJECT VISION AND BUSINESS RULES – FULL DETAILED END-TO-END SPEC
 
-## 1.1 Tagline & Core Philosophy
-"My language trainer told me exactly what to do today."
+## 1.1 Core Tagline and Philosophy
 
-Language Skull transforms language learning into a structured **daily training program** (Morning + Evening sessions) like a fitness split in a gothic dark academia library. 
-Every learner on the same course follows the **exact same plan**. Users mark activities “Done” manually. The app recommends the next session gently.
+**Tagline:** "My language trainer told me exactly what to do today."
 
-## 1.2 Branding & Aesthetic
-- **Name**: Language Skull
-- **Style**: Gothic dark academia – mysterious scholar, midnight private library, premium, authoritative, strong, slightly occult.
-- **Color Palette** (exact – see .cursorrules):
-  - Background: #050505
-  - Surfaces/Cards: #111111 + .ultraThinMaterial where appropriate
-  - Accent: #4A1C1C (muted burgundy)
-  - Highlight: #D4C4A8 (very subtle parchment)
-  - Text: #FFFFFF / #E5E5E5
+Language Skull turns language learning into a **structured daily training program** (Morning + Evening sessions) that feels like having a personal coach. It removes decision fatigue by giving every user on the same course the exact same plan each day. Users simply mark activities as done. The app gently recommends the next session but never forces strict tracking or gamification.
 
-- **UI Base**: Default iOS native components (NavigationStack, TabView, sheets, gestures, liquid glass). No heavy custom styling until Figma is provided later.
+This creates consistency, habit formation, and a premium "coach-like" feeling that most language apps lack.
 
-## 1.3 Business & Monetization Model
-- **Free Download** with full 7-day Pro trial.
-- **Trial**: Top 5 languages based on device locale (e.g., English device → Spanish, French, German, Italian, Portuguese).
-- **Post-Trial**: Monthly auto-renewable subscription via StoreKit 2.
-- **Full Catalog**: All major living languages + dead languages (Latin, etc.) + fictional (Klingon, Elvish, etc.).
-- **Referral System**: "You and your friend both get 3 months free." (MVP = UI + local tracking stub. Full backend in Phase 2).
+## 1.2 Branding & Aesthetic (Strict Guidance)
+
+**Name:** Language Skull
+
+**Style:** Gothic dark academia – mysterious scholar’s library at midnight, premium, authoritative, strong, slightly occult.
+
+**Color Palette (Exact):**
+- Background: #050505
+- Surfaces/Cards: #111111 + .ultraThinMaterial / .regularMaterial
+- Accent (buttons, progress, highlights): #4A1C1C (muted burgundy)
+- Subtle parchment highlight: #D4C4A8
+- Text Primary: #FFFFFF
+- Text Secondary: #E5E5E5
+
+**UI Philosophy:** Default iOS components first (NavigationStack, TabView, native sheets, liquid glass). Only the color palette and very subtle skull motif differentiate the app. No heavy custom styling until a Figma file is provided later.
+
+**Header Rule:** Right side of navigation bar = circular User Avatar. Tap opens native menu with Profile, Manage Plan, Refer a Friend, Sign Out. No skull logo in the header.
+
+## 1.3 Business & Monetization Model (Clear Rules)
+
+- **Free to download** with no forced signup or paywall on first launch.
+- Every new user receives a **full 7-day Pro trial** (all languages, all features, admin mode).
+- After trial: Monthly auto-renewable subscription required for continued access to new content and new languages.
+- Trial languages: Top 5 based on device locale.
+- Full catalog (major living + dead + fictional languages) unlocked after subscription.
+- Referral program: "You and your friend both get 3 months free" (MVP = local tracking stub + UI; real StoreKit credit in Phase 2).
 
 ## 1.4 Target User & Success Criteria
-Serious learners who want structure and consistency.  
-MVP must feel premium, native, and fully functional end-to-end (onboarding → daily sessions → trial expiry → upgrade → progress persistence).
+
+**Target User:** Serious language learners who want structure and consistency rather than gamification or chaotic flashcard decks.
+
+**MVP Success Criteria:**
+- User can complete onboarding as guest in under 2 minutes.
+- User can complete a full Morning or Evening session on day one.
+- Trial-to-paid conversion flow is functional and non-intrusive.
+- Admin has a working method to import new content without rebuilding the app.
+- All core activity types (lists, flashcards, D-1/D-3 revisions, grammar) work correctly.
+- Data persists correctly across launches and guest-to-signed-in transitions.
 
 ## 1.5 Content Strategy
-- MVP: Manual content via bundled JSON + Markdown + Admin import.
-- Future: Algorithmic word generation based on user proficiency (stub in MVP).
 
-All rules in this file are binding. Do not deviate.
+**MVP:** Manual content via bundled JSON + Markdown + in-app Admin Import flow (see docs/05 for full details).
+
+**Phase 2+:** Algorithmic generation of daily word sets based on user proficiency and performance (stub architecture prepared in MVP).
+
+## 1.6 Overall MVP Scope Reminder
+
+The MVP must feel like a premium, native iOS app with a clear daily coach-like structure. Everything else (spaced repetition, audio, cloud sync, web admin, community features) is explicitly out of scope for Phase 1.
+
+This document, combined with the other expanded docs (especially 02, 03, 04, and 05), gives Cursor everything needed to build a functional, shippable end-to-end MVP.
