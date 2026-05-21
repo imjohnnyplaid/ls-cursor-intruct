@@ -4,13 +4,36 @@
 
 The content pipeline is the backbone of Language Skull. It must be reliable, easy for a small content team to maintain, and ready for future automation.
 
-**MVP Goal**: Allow the admin (you) to easily add and update words, phrases, and grammar sections. The app must load this content on first launch and keep it in sync with user progress.
+**MVP Goal**: Allow the admin (you) to easily add and update words, phrases, and grammar sections **out of the box** with a working method on day one. The app must load this content on first launch and keep it in sync with user progress.
 
 **Future Goal (Phase 2+)**: Move toward algorithmic generation of personalized daily word sets based on user proficiency and spaced repetition signals.
 
-## 5.2 MVP: Manual Content Pipeline (Current Focus)
+## 5.2 MVP: Manual Content Pipeline (Current Focus) – Working Out of the Box
 
-### 5.2.1 Content Sources (Shipped with App)
+### 5.2.1 Concrete Admin Method for Pushing New Lessons (MVP – Functional Day One)
+
+**Primary Method: In-App Admin Import (Recommended for MVP)**
+
+This is the working method the admin uses immediately:
+
+1. Admin opens the app and goes to the **Admin tab** (visible in MVP).
+2. Taps **"Import / Update Content"**.
+3. Chooses one of two options:
+   - **Import Entire Language Folder** (select a folder containing `words.json`, `phrases.json`, `grammar.md`)
+   - **Import Individual Files** (select one or more JSON/Markdown files)
+4. App performs validation (see 5.2.6).
+5. Admin chooses **Replace** or **Merge** for existing content.
+6. Content is parsed and saved to SwiftData.
+7. User progress is **never deleted**.
+8. Admin can immediately use "Preview as Learner" to test the new content.
+
+This flow gives the admin a fully working way to push new lessons without needing to rebuild the app or touch code.
+
+**Secondary Method (for initial content or bulk updates): Bundled JSON + Markdown**
+
+Initial content ships in the app bundle under `Content/<Language>/`. On first launch (or when a new course is added), the `ContentSeeder` automatically loads it. This is useful for the very first set of lessons.
+
+### 5.2.2 Content Sources (Shipped with App)
 
 All initial content lives in the app bundle under `Content/<Language>/`:
 
@@ -30,7 +53,7 @@ Content/
     ...
 ```
 
-### 5.2.2 words.json Format (Strict)
+### 5.2.3 words.json Format (Strict)
 
 ```json
 [
@@ -59,10 +82,10 @@ Content/
 - `difficulty` is used for future algorithmic sorting (1 = easiest).
 - `tags` are optional but recommended for future filtering.
 
-### 5.2.3 phrases.json Format
+### 5.2.4 phrases.json Format
 Identical structure to words.json. Use `p_<language>_<number>` for IDs.
 
-### 5.2.4 grammar.md Format
+### 5.2.5 grammar.md Format
 
 Use simple Markdown with numbered H1 headings:
 
@@ -80,7 +103,7 @@ Estar = To be (location/state)
 
 The app parses H1 headings as section numbers.
 
-### 5.2.5 First Launch & Seeding Flow (Detailed)
+### 5.2.6 First Launch & Seeding Flow (Detailed)
 
 1. App launches for the first time.
 2. `ContentSeeder` service runs.
@@ -88,25 +111,19 @@ The app parses H1 headings as section numbers.
 4. It loads the corresponding `Content/<Language>/` folder.
 5. It parses `words.json`, `phrases.json`, and `grammar.md`.
 6. It creates `Course`, `Word`, `Phrase`, and `GrammarSection` objects in SwiftData.
-7. It creates a default `StudyPlan` based on the admin-defined template (see 06_STUDY_PLAN...).
+7. It creates a default `StudyPlan` based on the admin-defined template.
 8. It marks the course as the user’s active course.
 
 **Error Handling**:
 - If JSON is malformed → show clear error + fallback to English content.
 - If grammar.md has no numbered headings → log warning and skip grammar sections.
 
-### 5.2.6 Admin Import Flow (MVP)
+### 5.2.7 Admin Import Validation Rules (Must Be Implemented)
 
-1. Admin goes to Admin tab → "Import Content".
-2. Selects a language folder or individual JSON/Markdown files.
-3. App validates the files (correct keys, unique IDs, valid dayIntroduced numbers).
-4. If valid → replaces or merges into existing SwiftData (admin chooses replace vs merge).
-5. User progress is never deleted during import.
-
-**Validation Rules** (must be implemented):
 - All word/phrase IDs must be unique within the language.
 - `dayIntroduced` must be a positive integer.
 - Grammar sections must have sequential numbers starting from 1.
+- File size and structure validation with clear error messages shown to the admin.
 
 ## 5.3 Phase 2: Algorithmic Layer (Future)
 
@@ -139,5 +156,6 @@ When implementing:
 - Store content version in `Course.contentVersion` so future imports can detect updates.
 - Never delete user progress during import.
 - Log clear, actionable errors for the admin.
+- The in-app Admin Import flow must be fully functional on day one of MVP.
 
-This pipeline must feel rock-solid. Content is the product.
+This pipeline must feel rock-solid. Content is the product. The admin must have a reliable, working method to push new lessons without rebuilding the app.
