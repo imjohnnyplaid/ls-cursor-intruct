@@ -12,17 +12,17 @@ This creates consistency, habit formation, and a premium "coach-like" feeling th
 
 **Name:** Language Skull
 
-**Style:** Gothic dark academia – mysterious scholar’s library at midnight, premium, authoritative, strong, slightly occult.
+**Style:** Sophisticated dark academia — think **Old Oxford or Harvard of 100 years ago**. Polished, elegant, a little dark and mysterious. Refined and premium, with subtle mystery. **Not** parchment, wax, overly ornate gothic, or heavy fantasy aesthetics.
 
 **Color Palette (Exact):**
 - Background: #050505
 - Surfaces/Cards: #111111 + .ultraThinMaterial / .regularMaterial
 - Accent (buttons, progress, highlights): #4A1C1C (muted burgundy)
-- Subtle parchment highlight: #D4C4A8
+- Subtle parchment highlight (used sparingly): #D4C4A8
 - Text Primary: #FFFFFF
 - Text Secondary: #E5E5E5
 
-**UI Philosophy:** Default iOS components first (NavigationStack, TabView, native sheets, liquid glass). Only the color palette and very subtle skull motif differentiate the app. No heavy custom styling until a Figma file is provided later.
+**UI Philosophy:** Default iOS components first (NavigationStack, TabView, native sheets, liquid glass). The app must feel **modern, ultra-polished, and buttery smooth**. Every interaction should be a joy to use. Flashcard interactions in particular must be world-class: super smooth, satisfying, visually stunning, and delightful.
 
 **Header Rule:** Right side of navigation bar = circular User Avatar. Tap opens native menu with Profile, Manage Plan, Refer a Friend, Sign Out. No skull logo in the header.
 
@@ -55,6 +55,6 @@ This creates consistency, habit formation, and a premium "coach-like" feeling th
 
 ## 1.6 Overall MVP Scope Reminder
 
-The MVP must feel like a premium, native iOS app with a clear daily coach-like structure. Everything else (spaced repetition, audio, cloud sync, web admin, community features) is explicitly out of scope for Phase 1.
+The MVP must feel like a premium, native iOS app with a clear daily coach-like structure and **world-class interactions** (especially flashcards). Everything else (spaced repetition, audio, cloud sync, web admin, community features) is explicitly out of scope for Phase 1.
 
 This document, combined with the other expanded docs (especially 02, 03, 04, and 05), gives Cursor everything needed to build a functional, shippable end-to-end MVP.

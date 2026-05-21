@@ -1,32 +1,31 @@
 # 07 UI DESIGN SYSTEM & NAVIGATION – FULL DETAILED END-TO-END SPEC
 
-## 7.1 Core UI Philosophy (Strict – Default iOS First)
+## 7.1 Core UI Philosophy (Strict – Default iOS First + Premium Feel)
 
-**Language Skull must feel like a native, premium Apple app that happens to have a beautiful dark gothic theme.**
+**Language Skull must feel like a modern, ultra-polished, buttery-smooth native Apple app.**
 
-We do **not** fight the iOS system. We embrace it.
+Every interaction should be a **joy to use**. The app should feel premium, sophisticated, and delightful.
 
-Rules:
-- Use `NavigationStack` + large titles by default
-- Use `TabView` with the standard bottom tab bar
-- Use native sheets, alerts, confirmation dialogs, and action sheets
-- Use liquid glass / `.ultraThinMaterial` and `.regularMaterial` extensively on cards, sheets, and backgrounds
-- Support all default gestures (swipe back, long press for context menus, pull-to-refresh where appropriate)
-- Use SF Symbols for every icon
-- Keep animations subtle and system-like (`.easeInOut`, `.spring`)
+**Key Quality Bar:**
+- Interactions must be **world-class**, especially flashcards (super smooth animations, satisfying gestures, visually stunning, delightful micro-interactions, 60/120fps performance).
+- Overall aesthetic: Sophisticated dark academia — **Old Oxford or Harvard of 100 years ago**. Polished, elegant, a little dark and mysterious. Refined and understated. **Not** parchment, wax, or overly ornate gothic.
 
-Only the color palette and very subtle skull motif differentiate us from a standard high-quality dark iOS app. Heavy custom styling is **forbidden** until a Figma file is provided later.
+We embrace default iOS components while elevating the feel through:
+- Thoughtful use of liquid glass / material
+- Subtle, high-quality animations
+- Excellent gesture handling (especially in flashcards)
+- Consistent, premium visual language
 
 ## 7.2 Exact Color Palette (Use These Values)
 
-- Background (main view): `#050505`
-- Surface / Card background: `#111111` + material blur effect
-- Accent color (buttons, progress rings, highlights, active tab): `#4A1C1C` (muted burgundy)
-- Subtle parchment / secondary highlight: `#D4C4A8`
-- Text Primary: `#FFFFFF`
-- Text Secondary / captions: `#E5E5E5`
+- Background (main view): #050505
+- Surface / Card background: #111111 + material blur effect
+- Accent color (buttons, progress rings, highlights, active tab): #4A1C1C (muted burgundy)
+- Subtle parchment / secondary highlight (used sparingly): #D4C4A8
+- Text Primary: #FFFFFF
+- Text Secondary / captions: #E5E5E5
 
-Apply colors via a `Theme` environment object or simple `Color` extension so they are easy to change later.
+Apply colors via a `Theme` environment object or simple `Color` extension.
 
 ## 7.3 Header / Navigation Bar Rule (Non-Negotiable)
 
@@ -34,59 +33,53 @@ Apply colors via a `Theme` environment object or simple `Color` extension so the
 
 Right side of every navigation bar = circular User Avatar (use `person.circle.fill` SF Symbol or user photo if available).
 
-Tapping the avatar must open a **native menu** (using `.contextMenu` or `Menu` with `Button`s) containing exactly these items in this order:
-
-1. **Profile** – Shows user info, current streak, words/phrases learned, current plan name
-2. **Manage Plan** – Full billing info, trial/subscription status, next billing date, cancel/upgrade options
-3. **Refer a Friend** – Opens share sheet with pre-filled message + referral link
-4. **Sign Out** – Signs out Apple ID and returns to guest/launch state
+Tapping the avatar must open a **native menu** containing exactly these items:
+1. **Profile**
+2. **Manage Plan**
+3. **Refer a Friend**
+4. **Sign Out**
 
 ## 7.4 Tab Bar
 
 Bottom `TabView` with exactly 4 tabs:
-- **Home** (skull icon or house)
-- **Calendar** (calendar icon)
-- **Admin** (gear or wrench icon) – visible in MVP, easy to hide before submission
-- **Profile** (person icon)
+- **Home**
+- **Calendar**
+- **Admin** (visible in MVP, easy to hide before submission)
+- **Profile**
 
-Use default iOS tab bar appearance. Selected tab uses our accent color (`#4A1C1C`).
+Use default iOS tab bar appearance. Selected tab uses our accent color.
 
-## 7.5 Liquid Glass & Material Usage
+## 7.5 Liquid Glass & Material + Interaction Polish
 
-Apply `.background(.ultraThinMaterial)` or `.background(.regularMaterial)` on:
-- Cards and list rows
-- Sheet backgrounds
-- Tab bar and navigation bar when appropriate
+Apply `.background(.ultraThinMaterial)` or `.background(.regularMaterial)` generously.
 
-This gives the premium "glassmorphism" feel while staying fully native.
+**Flashcard interactions must be exceptional**:
+- Smooth swipe gestures with natural physics
+- Satisfying tap-to-flip with elegant animation
+- Subtle visual feedback and micro-interactions
+- High performance (buttery smooth)
+- Visually stunning while remaining clean and sophisticated
 
 ## 7.6 When Custom Styling Is Allowed
 
-**Only after a Figma file is provided.**
-
-Until then:
-- No custom button styles
-- No heavy shadows or complex gradients
-- No custom fonts (use system fonts)
-- No custom navigation bar appearances beyond color
-- Subtle skull motif only in empty states, loading screens, and the app icon
+**Only after a Figma file is provided.** Until then, stay extremely close to default iOS components and focus on **interaction quality and polish** rather than heavy visual customization.
 
 ## 7.7 Accessibility & Polish Requirements
 
 - All interactive elements must have proper accessibility labels and hints.
-- Use dynamic type support (`.font(.body)` etc. scale correctly).
-- Maintain sufficient contrast with the dark gothic palette.
-- Add subtle haptic feedback on important actions (Mark as Done, session complete).
-- Every screen must have a working SwiftUI Preview showing multiple states (loading, empty, populated, error).
+- Support Dynamic Type.
+- Maintain sufficient contrast.
+- Add subtle, high-quality haptic feedback on important actions.
+- Every screen must have a working SwiftUI Preview showing multiple states.
 
 ## 7.8 Cursor Implementation Rules
 
 - Start every screen with default SwiftUI components.
-- Create a lightweight `Theme` struct or environment object for colors.
-- Wrap all views in a `LanguageSkullTheme` modifier or similar.
-- Do **not** create custom `ButtonStyle` or heavy visual overrides in MVP.
+- Prioritize **buttery smooth interactions** and delightful micro-interactions, especially in flashcards.
+- Create a lightweight `Theme` for colors.
 - Use SF Symbols exclusively for icons.
-- Make the avatar menu using native `Menu` + `Button` or `.contextMenu`.
-- Ensure the Admin tab can be hidden with a simple feature flag before App Store submission.
+- Make the avatar menu using native components.
+- Ensure the Admin tab can be hidden easily before submission.
+- The overall feel must be modern, ultra-polished, and a genuine joy to use.
 
-This approach guarantees we ship a clean, native-feeling, App Review-friendly app that still feels premium and on-brand.
+This approach guarantees we ship a premium-feeling, native iOS app with world-class interactions while staying true to the sophisticated dark academia aesthetic (Old Oxford / old Harvard vibe).
