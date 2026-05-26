@@ -60,8 +60,19 @@ Follow this order strictly:
 ## Important Documents
 
 - `docs/` → Full detailed specifications (data models, flows, UI rules, etc.)
-- `.cursorrules` → Global rules Cursor must follow in every session
+- `.cursor/rules/` → **Primary rules system** (`core.mdc` for architecture/coding standards + `design.mdc` for quality bar, colors, and aesthetic). Both use `alwaysApply: true` so Cursor enforces them automatically in every session.
+- `.cursorrules` → Legacy global rules file (kept as fallback for older setups; all original content preserved)
 - `prompts/` → Phase-by-phase build instructions
+
+## Cursor Rules Migration Note
+
+We have migrated from the single `.cursorrules` file to Cursor's modern `.cursor/rules/` directory structure. This provides:
+- Better organization and maintainability
+- YAML frontmatter for metadata (`alwaysApply`, `description`, globs if needed)
+- Logical split: core engineering rules vs. design system rules
+- Future-proofing as the project grows
+
+Cursor will pick up the `.mdc` files automatically. The legacy file remains for compatibility.
 
 ## Prerequisites
 
@@ -72,10 +83,11 @@ Before starting Phase 1 you should have:
 
 ## Tips for Best Results
 
-- Always test in Simulator after major components (as specified in each prompt)
+- Always test in Simulator after major components (as specified in each phase prompt)
 - Make clean git commits after each logical piece of work
 - Be strict about the checklists in each phase prompt
 - If something is ambiguous, ask Cursor to clarify using the docs
+- The rules in `.cursor/rules/core.mdc` and `design.mdc` are non-negotiable and loaded automatically
 
 ## Support
 

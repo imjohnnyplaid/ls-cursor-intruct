@@ -16,7 +16,8 @@ Feels like having a personal coach: clear Morning + Evening daily plans, world-c
 - `docs/` – Full detailed specifications (data models, flows, UI rules, compliance, etc.)
 - `prompts/` – 9 production-grade phase prompts to feed to Cursor
 - `SETUP.md` – How to use the prompts + recommended workflow
-- `.cursorrules` – Global rules Cursor must follow in every session
+- `.cursor/rules/` – **Modern Cursor rules system** (`core.mdc` + `design.mdc` with `alwaysApply: true`). These are the authoritative rules enforced in every session.
+- `.cursorrules` – Legacy fallback (kept for compatibility; content preserved but deprecated in favor of `.cursor/rules/`)
 
 ## How to Build
 
@@ -40,5 +41,6 @@ After each phase, Cursor should give you a completion report. Review it before m
 - Test in Simulator after every major component
 - Make clean git commits
 - Follow the docs and refined aesthetic exactly
+- Cursor automatically loads rules from `.cursor/rules/` (alwaysApply files take precedence)
 
 Good luck building Language Skull!
