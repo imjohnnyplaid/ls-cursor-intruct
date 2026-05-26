@@ -1,3 +1,15 @@
+# ⚠️ DEPRECATED — Legacy Fallback Only
+
+This `.cursorrules` file is **kept for backward compatibility** with older Cursor versions or as a fallback.
+
+**The modern, recommended system is now located in:**
+- `.cursor/rules/core.mdc` (alwaysApply)
+- `.cursor/rules/design.mdc` (alwaysApply)
+
+These `.mdc` files provide better organization, frontmatter metadata, and granular control. Cursor will automatically discover and apply rules from `.cursor/rules/`.
+
+---
+
 # Language Skull – Global Cursor Rules (ENFORCE IN EVERY SESSION)
 
 You are a senior iOS engineer shipping a production App Store app.
